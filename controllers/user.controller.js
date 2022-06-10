@@ -4,7 +4,6 @@ require("dotenv").config();
 const { Users } = require("../models/users.models");
 const { createTokens, validateToken } = require("../jwt");
 const cookieParser = require("cookie-parser");
-const { validateName, userVlidation } = require("../middleware/validation");
 
 const register = (req, res) => {
   const { name, username, email, password, confirmpassword } = req.body;
