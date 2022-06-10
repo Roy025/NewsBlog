@@ -1,262 +1,317 @@
 {
-  "info": {
-    "_postman_id": "dbf92006-9321-4cc1-9fae-79503df2b3a9",
-    "name": "Collection2",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "21333163"
-  },
-  "item": [
-    {
-      "name": "Register",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": " {\r\n     \"name\":\"nnnn\",\r\n     \"username\":\"mmmm\",\r\n            \"email\": \"mmmm@gmail.com\",\r\n            \"password\":\"mmmm\"\r\n }\r\n",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/user/register",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["user", "register"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "login",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"username\":\"nnnn\",\r\n    \"password\":\"mmmm\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/user/login",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["user", "login"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "profile",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"username\":\"nnnn\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/user/profile",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["user", "profile"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "allUsers",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:3001/user/all",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["user", "all"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Update",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"id\":15,\r\n    \"name\":null,\r\n    \"username\":null,\r\n    \"email\":\"kkkkkk@gmail.com\",\r\n    \"password\" : null\r\n\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/user/update",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["user", "update"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "delete",
-      "request": {
-        "method": "DELETE",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/user/delete",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["user", "delete"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "NewsPost",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \r\n        \"username\":\"llll\",\r\n    \"title\":\"Test333\",\r\n    \"body\":\"Testing22333\"\r\n    \r\n\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/news/post",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["news", "post"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "AllNews",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:3001/news/all",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["news", "all"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "UpdateNews",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"id\": 2,\r\n        \"title\": \"Test12\",\r\n        \"body\": \"Test\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/news/update",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["news", "update"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "DeleteNews",
-      "request": {
-        "method": "DELETE",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \r\n        \"title\": \"Test31\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/news/delete",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["news", "delete"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "GetUserNews",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"username\":\"eeee\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:3001/news/",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "3001",
-          "path": ["news", ""]
-        }
-      },
-      "response": []
-    }
-  ]
+	"info": {
+		"_postman_id": "dbf92006-9321-4cc1-9fae-79503df2b3a9",
+		"name": "Collection2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21333163"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"name\":\"nnnn\",\r\n     \"username\":\"mmmm\",\r\n            \"email\": \"mmmm@gmail.com\",\r\n            \"password\":\"mmmm\"\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"nnnn\",\r\n    \"password\":\"mmmm\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"nnnn\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/user/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":15,\r\n    \"name\":null,\r\n    \"username\":null,\r\n    \"email\":\"kkkkkk@gmail.com\",\r\n    \"password\" : null\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NewsPost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"username\":\"llll\",\r\n    \"title\":\"Test333\",\r\n    \"body\":\"Testing22333\"\r\n    \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/news/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"news",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllNews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/news/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"news",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateNews",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n        \"title\": \"Test12\",\r\n        \"body\": \"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/news/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"news",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteNews",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"title\": \"Test31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/news/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"news",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserNews",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"eeee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/news/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"news",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }

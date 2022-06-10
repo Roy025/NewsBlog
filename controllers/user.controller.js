@@ -4,9 +4,10 @@ require("dotenv").config();
 const { Users } = require("../models/users.models");
 const { createTokens, validateToken } = require("../jwt");
 const cookieParser = require("cookie-parser");
+const { validateName, userVlidation } = require("../middleware/validation");
 
 const register = (req, res) => {
-  const { name, username, email, password } = req.body;
+  const { name, username, email, password, confirmpassword } = req.body;
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
       name: name,
@@ -78,12 +79,23 @@ const getAllUsesr = async (req, res) => {
   });
 };
 const updateUser = async (req, res) => {
-  const { id, name, username, email, password } = req.body;
+  const { id, name, username, email, password, oldpassword } = req.body;
+
   const user = await Users.findByPk(id);
   if (!user) res.status(400).json({ error: "User Doesn't Exist" });
   else {
-    if (name !== null) user.set({ name: name });
-    if (username !== null) user.set({ username: username });
+    const checkPass = await bcrypt.compare(oldpassword, user.password);
+    if (!checkPass) {
+      return res
+        .status(400)
+        .json({ error: "Passwords Doesn't Match With Old Password." });
+    }
+    if (name !== null) {
+      user.set({ name: name });
+    }
+    if (username !== null) {
+      user.set({ username: username });
+    }
     if (password !== null)
       user.set({ password: await bcrypt.hash(password, 10) });
     if (email !== null) user.set({ email: email });
