@@ -1,3 +1,7 @@
+const express = require("express");
+const app = express();
+const cors = require("cors");
+app.use(cors());
 const { body } = require("express-validator");
 const {
   del,

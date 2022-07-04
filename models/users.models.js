@@ -1,5 +1,10 @@
 const { sequelize } = require("../config/config");
 const { DataTypes } = require("sequelize");
+const express = require("express");
+const app = express();
+const cors = require("cors");
+app.use(cors());
+
 exports.Users = sequelize.define("users", {
   name: {
     type: DataTypes.STRING,

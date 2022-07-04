@@ -1,3 +1,7 @@
+const express = require("express");
+const app = express();
+const cors = require("cors");
+app.use(cors());
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
@@ -19,6 +23,7 @@ const register = (req, res) => {
       })
       .catch((err) => {
         if (err) {
+          console.log(err);
           res.status(400).json({ error: err });
         }
       });

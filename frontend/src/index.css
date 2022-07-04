@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  font-family: "Indie Flower", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Navbar */
+.bg-color {
+  background-color: rgb(80, 80, 80);
+}
+.name {
+  display: flex;
+  align-items: center;
+}
+.name h3 {
+  font-style: italic !important;
+  font-weight: 500;
+}
+.logo {
+  font-size: 40px;
+}
+.nav-link {
+  color: rgb(220, 220, 220) !important;
+}
+.nav-links a:last-child {
+  border: 2px solid rgb(209, 247, 255);
+}
+
+/* Register */
+.pic {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  width: 100% !important;
+  height: 100% !important;
+}
+.icon {
+  display: flex;
+  align-items: left;
+  width: 20px;
+  margin: 5px;
+}
