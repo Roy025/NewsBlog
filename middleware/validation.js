@@ -55,6 +55,8 @@ validatePassword = [
     .withMessage("Password is empty!")
     .isLength({ min: 3, max: 20 })
     .withMessage("Password must be 3 to 20 characters long!"),
+];
+ValidateConfirmPassword = [
   check("confirmpassword")
     .trim()
     .not()
@@ -80,6 +82,7 @@ module.exports = {
   validateUserName,
   validateEmail,
   validatePassword,
+  ValidateConfirmPassword,
   userVlidation,
   validateTitle,
   validateBody,

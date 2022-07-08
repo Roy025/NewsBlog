@@ -11,35 +11,33 @@ const {
   UserProfile,
   login,
 } = require("../controllers/user.controller");
-const { validateToken } = require("../jwt");
+
 const {
   userVlidation,
   validateName,
   validateUserName,
   validateEmail,
   validatePassword,
+  ValidateConfirmPassword,
 } = require("../middleware/validation");
+const { validateToken } = require("../jwt");
 
 const router = require("express").Router();
 
 router.post(
   "/register",
   validateName,
-  validateUserName,
   validateEmail,
+  validateUserName,
   validatePassword,
+  ValidateConfirmPassword,
   userVlidation,
   register
 );
-router.post("/login", validateUserName, userVlidation, login);
+router.post("/login", validateUserName, validatePassword, userVlidation, login);
 router.get("/all", getAllUsesr);
-router.get(
-  "/profile",
-  validateUserName,
-  userVlidation,
-  validateToken,
-  UserProfile
-);
-router.put("/update", validateToken, updateUser);
-router.delete("/delete", validateUserName, userVlidation, validateToken, del);
+router.get("/profile/:username", validateToken, UserProfile);
+
+router.put("/update/:id", validateToken, updateUser);
+router.delete("/delete/:username", del);
 module.exports = router;

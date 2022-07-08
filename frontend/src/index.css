@@ -7,15 +7,25 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 /* Navbar */
 .bg-color {
   background-color: rgb(80, 80, 80);
 }
+.txt-color {
+  color: rgb(80, 80, 80);
+}
 .name {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-.name h3 {
+.name h3,
+h1,
+h2,
+h4 {
   font-style: italic !important;
   font-weight: 500;
 }
@@ -42,3 +52,52 @@ body {
   width: 20px;
   margin: 5px;
 }
+/* Profile */
+.pro-1 {
+  background-color: #f4f5f7;
+}
+.pro-2 {
+  border-radius: 0.5rem;
+}
+.pro-3 {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.pro-4 {
+  width: 80px;
+}
+
+/* Profile */
+.blockquote-custom {
+  position: relative;
+  font-size: 1.1rem;
+}
+
+.blockquote-custom-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -25px;
+  left: 50px;
+}
+/* ************ */
+.italic {
+  font-style: italic !important;
+}
+.bold {
+  font-weight: bold !important;
+}
+.image {
+  transform: rotateX(180deg) rotatey(180deg);
+}
+.bg-color1 {
+  background-color: rgb(238, 231, 227);
+}
+/* Button,
+button {
+  background-color: rgb(80, 80, 80) !important;
+} */

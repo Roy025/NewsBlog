@@ -1,30 +1,33 @@
-const { sign, verify } = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
+const { Users } = require("./models/users.models");
 require("dotenv").config();
-const User = require("./models/users.models");
 
-const createTokens = (user) => {
-  const accessToken = sign(
-    { username: user.username, id: user.id },
-    process.env.TOKEN
-  );
-
-  return accessToken;
-};
+function createTokens(username) {
+  console.log(username);
+  return jwt.sign({ username: username }, process.env.TOKEN, {});
+}
 
 const validateToken = (req, res, next) => {
-  const accessToken = req.cookies[process.env.ACCESSTOKEN];
-
+  const accessToken = req.headers[process.env.ACCESSTOKEN];
+  console.log("Token " + accessToken);
+  // const accessToken = req.headers.authorization.split(" ")[1];
+  //Bearer+" "+token
   if (!accessToken)
     return res.status(400).json({ error: "User not Authenticated!" });
-  try {
-    const validToken = verify(accessToken, process.env.TOKEN);
+  else {
+    try {
+      const validToken = jwt.verify(accessToken, process.env.TOKEN);
 
-    if (validToken) {
-      req.authenticated = true;
-      return next();
+      if (validToken) {
+        req.authenticated = true;
+        req.userData = {
+          username: validToken.username,
+        };
+        return next();
+      }
+    } catch (err) {
+      return res.status(400).json({ error: err });
     }
-  } catch (err) {
-    return res.status(400).json({ error: err });
   }
 };
 

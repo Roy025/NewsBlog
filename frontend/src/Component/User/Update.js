@@ -1,90 +1,101 @@
-import { useState } from "react";
-import React from "react";
-import instance from "../Api/api";
-import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import ".././../index.css";
+import getCurrentUser from "../auth.services/getCurrentUser";
 
-export const SignUp = () => {
-  const [signupData, setsignupData] = useState({
+import axios from "axios";
+import authHeader from "../auth.services/authHeader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const Update = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [updateData, setupdateData] = useState({
     name: "",
     email: "",
     username: "",
     password: "",
-    confirmpassword: "",
+    oldpassword: "",
+    message: "",
   });
-  const [signupStatus, setsignupStatus] = useState("");
-
-  const { name, username, email, password, confirmpassword } = signupData;
-  const signup = async () => {
+  const { name, username, email, password, oldpassword, message } = updateData;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast(updateData);
+  };
+  const handleChange = (e) => {
+    const update = e.target.name;
+    setupdateData({ ...updateData, [update]: e.target.value });
+  };
+  const update = async () => {
     try {
       await axios
-        .post(
-          "http://localhost:3001/user/register",
+        .put(
+          `http://localhost:3001/user/update/${id}`,
           {
             name: name,
             username: username,
             email: email,
             password: password,
-            confirmpassword: confirmpassword,
+            oldpassword: oldpassword,
+            message: message,
           },
-          { withCredentials: true }
+          { headers: authHeader() }
         )
         .then((response) => {
-          // console.log(response.data);
-          setsignupStatus(response.data);
+          console.log("response   ");
+          console.log(response);
+          console.log("response.data  ");
+          console.log(response.data.username);
+          const use = response.data.username;
+
+          if (response.data.message === "Updated Successfully") {
+            localStorage.setItem("username", use);
+            toast(response.data.message);
+            setTimeout(() => {
+              navigate(`/user/profile/${use}`);
+            }, 3000);
+          } else {
+            toast(response.data.error);
+          }
         })
         .catch((err) => {
-          console.log(err);
+          toast("err" + err);
+          toast("Error   " + err.request.response);
         });
     } catch (err) {
-      console.log(err);
-      instance.interceptors.response.use(undefined, (err) => {
-        console.log(err);
-      });
       if (err.response) {
-        // The client was given an error response (5xx, 4xx)
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else if (err.request) {
-        // The client never received a response, and the request was never left
-        console.log(signupData);
-        console.log(signupData.username);
-        console.log(err.request);
-        console.log(err.response);
-      } else {
-        // Anything else
-        console.log("Error", err.message);
+        toast("Error", err.message);
       }
     }
   };
-  const handleSubmit = (e) => {
-    console.log("Submitted");
-    console.log(signupData);
-    e.preventDefault();
+  const use = getCurrentUser();
+  const cancel = () => {
+    setTimeout(() => {
+      navigate(`/user/profile/${use}`);
+    }, 3000);
   };
-  const handleChange = (e) => {
-    const fieldName = e.target.name;
-    setsignupData({ ...signupData, [fieldName]: e.target.value });
-  };
-
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <section className="h-100 bg-dark">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col">
               <div className="card card-registration my-4">
                 <div className="row g-0">
-                  <div className="col-xl-6 d-none d-xl-block">
-                    <img
-                      src="https://www.futurefund.com/wp-content/uploads/2021/11/Future_Fund-2021-Website_Assets_Automatic_Registration.png"
-                      className="col-12 pic"
-                      alt="Sample photo"
-                    />
-                  </div>
                   <div className="col-xl-6">
                     <div className="card-body p-md-5 text-black">
-                      <h3 className="mb-5 text-uppercase fw-bold">Register</h3>
+                      <h3 className="mb-5 text-uppercase fw-bold italic">
+                        Update Info
+                      </h3>
 
                       <form action="" onSubmit={handleSubmit}>
                         <div className="mb-4 form-group">
@@ -109,9 +120,10 @@ export const SignUp = () => {
                             </div>
                             <input
                               className="form-control"
+                              required
                               id="email"
                               name="email"
-                              type="email"
+                              type="text"
                               placeholder="E-mail"
                               onChange={handleChange}
                             />
@@ -154,10 +166,10 @@ export const SignUp = () => {
                             </div>
                             <input
                               className="form-control"
-                              id="confirmpassword"
-                              name="confirmpassword"
+                              id="oldpassword"
+                              name="oldpassword"
                               type="password"
-                              placeholder="Confirm Password"
+                              placeholder="Old Password"
                               onChange={handleChange}
                             />
                           </div>
@@ -166,14 +178,13 @@ export const SignUp = () => {
                           <button
                             type="submit"
                             className="btn btn-dark btn-lg btn-block"
-                            onClick={signup}
+                            onClick={update}
                           >
-                            Register
+                            Update
                           </button>
-                          <p className="forgot-password text-right">
-                            Already registered? <a href="/login">Login</a>{" "}
-                          </p>
-                          <h1 className="msg">{signupStatus}</h1>
+                          <button className="btn" onClick={cancel}>
+                            Cancel
+                          </button>
                         </div>
                       </form>
                     </div>
@@ -187,3 +198,5 @@ export const SignUp = () => {
     </>
   );
 };
+
+export default Update;
