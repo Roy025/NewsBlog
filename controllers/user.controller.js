@@ -10,7 +10,8 @@ require("dotenv").config();
 const { Users } = require("../models/users.models");
 const { createTokens, validateToken } = require("../jwt");
 const cookieParser = require("cookie-parser");
-
+const Nodecache = require('node-cache')
+const cache = new Nodecache();
 const register = (req, res) => {
   const { name, username, email, password, confirmpassword } = req.body;
   bcrypt.hash(password, 10).then((hash) => {
@@ -98,8 +99,7 @@ const updateUser = async (req, res) => {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
       user.username = req.body.username || user.username;
-      user.password =
-        (await bcrypt.hash(req.body.password, 10)) || user.password;
+      // user.password= await bcrypt.hash((req.body.password ), 10) || user.password;
     }
     const updatedUser = await user.save();
     await user.save();
@@ -107,10 +107,12 @@ const updateUser = async (req, res) => {
       name: updatedUser.name,
       email: updatedUser.email,
       username: updatedUser.username,
+      password: updatedUser.password,
       message: "Updated Successfully",
     });
   }
 };
+
 
 const del = async (req, res) => {
   const { username } = req.params;
@@ -125,12 +127,32 @@ const del = async (req, res) => {
     });
   }
 };
-
+const CaChe = async (req, res,next) => {
+  if(req.method !== 'GET'){
+    console.log("Cannot Cache non-GET method")
+    return next();
+  }
+  const key = req.originalUrl;
+  const cacheRes = cache.get(key);
+  console.log(cacheRes);
+  if(cacheRes){
+    console.log(`Cache Hit For ${key}`);
+    res.send(cacheRes);
+  }else{
+    console.log(`Cache Miss For ${key}`);
+    res.originalUrl=res.send;
+    res.send = body =>{
+      res.originalUrl(body);
+      cache.set(key, body);
+    }
+    next();
+  }
+}
 module.exports = {
   register,
   del,
   updateUser,
   getAllUsesr,
-  login,
+  login,CaChe,
   UserProfile,
 };

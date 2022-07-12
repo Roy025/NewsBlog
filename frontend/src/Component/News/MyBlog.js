@@ -33,62 +33,24 @@ export const MyBlog = () => {
       })
       .catch((err) => console.log(err));
   };
-  const del = async (id) => {
-    console.log(id);
-    try {
-      await axios
-        .delete(`http://localhost:3001/news/delete/${id}`, {
-          headers: authHeader(),
-        })
-        .then((response) => {
-          toast(response.data.status);
-          myblog();
-        })
-        .catch((err) => {
-          toast(err);
-        });
-    } catch (err) {
-      toast(err);
-    }
-  };
   if (!posts.length)
     return (
       <div className="text-center font-italic txt-color">
         <h1>No Posts Yet.</h1>
       </div>
     );
-  const button = (id) => {
-    if (username === getCurrentUser()) {
-      return (
-        <div>
-          <button
-            className="btn-update"
-            onClick={() => navigate(`/news/update/${id}`)}
-          >
-            Update
-          </button>
-          <button
-            className="btn-delete"
-            onClick={() => {
-              del(id);
-            }}
-          >
-            Delete
-          </button>
-        </div>
-      );
-    }
-  };
-
+  
   const arr = posts.map((post, index) => {
     return (
-      <tr key={post.id}>
+       <tr key={post.id}>
         <th scope="row">{post.id}</th>
         <td>{post.title}</td>
-        <td>{post.body}</td>
         <td>{post.updatedAt}</td>
-        <td>{button(post.id)}</td>
-      </tr>
+        <td><button
+            className="btn-update"
+            onClick={() => navigate(`/news/blog/id/${post.id}`)}
+          >View</button></td>
+        </tr>
     );
   });
 
@@ -110,10 +72,8 @@ export const MyBlog = () => {
             <thead>
               <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Title</th>
-                <th scope="col">Body</th>
-                <th scope="col">Date</th>
-                <th>Button</th>
+              <th scope="col">Title</th>
+              <th scope="col">Created At</th>
               </tr>
             </thead>
             <tbody>{arr}</tbody>

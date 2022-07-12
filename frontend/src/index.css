@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "Indie Flower", sans-serif;
+  background-color: #f4f5f7 !important;
 }
 * {
   margin: 0;
@@ -67,13 +68,14 @@ h4 {
   width: 80px;
 }
 
-/* Profile */
+/* News */
 .blockquote-custom {
   position: relative;
   font-size: 1.1rem;
 }
 
-.blockquote-custom-icon {
+ .blockquote-custom-icon {
+  transform: rotate(180deg); 
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -97,7 +99,10 @@ h4 {
 .bg-color1 {
   background-color: rgb(238, 231, 227);
 }
-/* Button,
-button {
-  background-color: rgb(80, 80, 80) !important;
-} */
+
+.center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;  
+}

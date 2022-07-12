@@ -62,7 +62,7 @@ const UpdateNews = () => {
   const cancel = () => {
     const username = getCurrentUser();
     setTimeout(() => {
-      navigate(`/news/blog/${username}`);
+      navigate(`/news/blog/id/${id}`);
     }, 3000);
   };
   return (

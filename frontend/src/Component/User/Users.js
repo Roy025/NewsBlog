@@ -58,8 +58,7 @@ export const Users = () => {
               <th scope="col">Id</th>
               <th scope="col">Name</th>
               <th scope="col">E-mail</th>
-              <th scope="col">UsersName</th>
-              <th scope="col">button</th>
+              <th scope="col">UserName</th>
             </tr>
           </thead>
           <tbody>{arr}</tbody>

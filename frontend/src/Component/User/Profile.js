@@ -4,7 +4,6 @@ import axios from "axios";
 import authHeader from "../auth.services/authHeader";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Update from "./Update";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getCurrentUser from "../auth.services/getCurrentUser";
@@ -50,12 +49,16 @@ export const Profile = () => {
   const arr = () => {
     if (objs.username === getCurrentUser()) {
       return (
-        <div>
-          <button className="btn-update" onClick={updateProfile}>
-            Update
+         <div className="position-absolute bottom-0 end-0">
+          <button
+            className="zmdi zmdi-edit mr-3"
+            onClick={updateProfile}
+          >
           </button>
-          <button className="btn-delete" onClick={del}>
-            Delete
+          <button
+            className="zmdi zmdi-delete"
+            onClick={del}
+          >
           </button>
         </div>
       );

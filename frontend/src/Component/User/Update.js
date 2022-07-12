@@ -86,12 +86,12 @@ const Update = () => {
         pauseOnHover
       />
       <section className="h-100 bg-dark">
-        <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="container py-5 h-80">
+          <div className="row d-flex h-100">
             <div className="col">
               <div className="card card-registration my-4">
-                <div className="row g-0">
-                  <div className="col-xl-6">
+                <div className="row g-0 d-flex align-items-center justify-content-center">
+                  <div className="col-xl-6 ">
                     <div className="card-body p-md-5 text-black">
                       <h3 className="mb-5 text-uppercase fw-bold italic">
                         Update Info
@@ -144,7 +144,7 @@ const Update = () => {
                             />
                           </div>
                         </div>
-                        <div className="mb-4 form-group">
+                        {/* <div className="mb-4 form-group">
                           <div className="input-group">
                             <div className="input-group-addon icon">
                               <i className="zmdi zmdi-lock"></i>
@@ -158,7 +158,7 @@ const Update = () => {
                               onChange={handleChange}
                             />
                           </div>
-                        </div>
+                        </div> */}
                         <div className="mb-4 form-group">
                           <div className="input-group">
                             <div className="input-group-addon icon">
@@ -174,7 +174,7 @@ const Update = () => {
                             />
                           </div>
                         </div>
-                        <div className="d-md-grid justify-content-md-end">
+                        <div className="d-md-flex justify-content-md-end">
                           <button
                             type="submit"
                             className="btn btn-dark btn-lg btn-block"

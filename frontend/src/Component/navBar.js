@@ -5,20 +5,14 @@ import "../index.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import getCurrentUser from "./auth.services/getCurrentUser";
 import { GiNewspaper } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 export const NavBar = () => {
-  const [currentUser, setCurrentUser] = useState(undefined);
-  useEffect(() => {
-    const user = getCurrentUser();
-
-    if (user) {
-      setCurrentUser(user);
-    }
-    console.log(user);
-  }, []);
-  const logOut = () => {
+   const navigate = useNavigate();
+  const currentUser = getCurrentUser();
+ const logOut = () => {
     localStorage.removeItem("accesstoken");
     localStorage.removeItem("username");
+    navigate('/');
     console.log("Logged Out");
   };
   return (
@@ -40,52 +34,34 @@ export const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="nav-links ms-auto">
-              <Nav.Link eventKey="1" as={Link} to="/">
-                Home
-              </Nav.Link>
-              {currentUser && (
+              {currentUser ? (
+                <div className="navbar-nav ms-auto">
                 <Nav.Link
-                  eventKey="2"
+                  eventKey="1"
                   as={Link}
                   to={`user/profile/${currentUser}`}
                 >
                   Profile
                 </Nav.Link>
-              )}
-              {currentUser && (
-                <Nav.Link eventKey="3" as={Link} to="/news/all">
+                <Nav.Link eventKey="2" as={Link} to="/news/all">
                   Blog
                 </Nav.Link>
-              )}
-              {currentUser && (
-                <Nav.Link eventKey="4" as={Link} to="/news/myblog">
-                  MyBlog
-                </Nav.Link>
-              )}
-              {currentUser && (
-                <Nav.Link eventKey="5" as={Link} to="/user/all">
+                <Nav.Link eventKey="3" as={Link} to="/user/all">
                   Users
                 </Nav.Link>
-              )}
-              {currentUser && (
-                <Nav.Link eventKey="6" as={Link} to="/news/write">
+                <Nav.Link eventKey="4" as={Link} to="/news/write">
                   Write
+                </Nav.Link> 
+                <Nav.Link eventKey="5" as={Link} to="/" onClick={logOut}>
+                  Logout
                 </Nav.Link>
-              )}
-              {currentUser ? (
-                <div className="navbar-nav ms-auto">
-                  <li className="nav-item">
-                    <a href="/login" className="nav-link" onClick={logOut}>
-                      Logout
-                    </a>
-                  </li>
                 </div>
               ) : (
                 <div className="d-flex">
-                  <Nav.Link eventKey="7" as={Link} to="/user/register">
+                  <Nav.Link eventKey="6" as={Link} to="/user/register">
                     SignUp
                   </Nav.Link>
-                  <Nav.Link eventKey="8" as={Link} to="/user/login">
+                  <Nav.Link eventKey="7" as={Link} to="/user/login">
                     Login
                   </Nav.Link>
                 </div>

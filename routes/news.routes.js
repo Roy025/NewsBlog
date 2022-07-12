@@ -5,8 +5,9 @@ const {
   UpdateNews,
   deleteNews,
   getNewsByUser,
-  getMyNews,
+  getNewsBId,
 } = require("../controllers/news.controllers");
+const { CaChe } = require("../controllers/user.controller");
 const { validateToken } = require("../jwt");
 const {
   validateUserName,
@@ -24,10 +25,10 @@ router.post(
   validateToken,
   postNews
 );
-router.get("/all", AllNews);
+router.get("/all",CaChe, AllNews);
 router.put("/update/:id", validateToken, UpdateNews);
 
 router.delete("/delete/:id", validateToken, deleteNews);
-//router.get("/myblog", validateToken, getMyNews);
 router.get("/blog/:username", validateToken, getNewsByUser);
+router.get("/blog/id/:id", validateToken, getNewsBId);
 module.exports = router;

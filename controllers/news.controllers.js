@@ -47,19 +47,6 @@ const deleteNews = async (req, res) => {
     });
   }
 };
-// const getMyNews = async (req, res) => {
-//   const username = req.userData.username;
-//   const user = await NewsBlog.findOne({ where: { username: username } });
-//   if (!user) {
-//     return res.send("User have not posted anything yet.");
-//   } else {
-//     const news = await NewsBlog.findAll({ where: { username: username } });
-//     res.json({
-//       status: "success",
-//       data: news,
-//     });
-//   }
-//};
 const getNewsByUser = async (req, res) => {
   const { username } = req.params;
   console.log(username);
@@ -75,11 +62,22 @@ const getNewsByUser = async (req, res) => {
     });
   }
 };
+
+const getNewsBId = async (req, res) => {
+  const { id } = req.params;
+  const news = await NewsBlog.findOne({
+    where: { id: id },
+  });
+    res.json({
+      status: "success",
+      data: news,
+    });
+};
 module.exports = {
   postNews,
-  //getMyNews,
   AllNews,
   UpdateNews,
   deleteNews,
   getNewsByUser,
+  getNewsBId
 };

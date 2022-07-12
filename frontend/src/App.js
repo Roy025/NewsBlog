@@ -12,6 +12,7 @@ import { Users } from "./Component/User/Users";
 import { MyBlog } from "./Component/News/MyBlog";
 import Update from "./Component/User/Update";
 import UpdateNews from "./Component/News/UpdateNews";
+import { News } from "./Component/News/News";
 
 function App() {
   return (
@@ -30,10 +31,10 @@ function App() {
 
           {/* News */}
           <Route exact path="/news/all" element={<Blog />} />
-          {/* <Route exact path="/news/myblog" element={<MyBlog />} /> */}
           <Route exact path="/news/blog/:username" element={<MyBlog />} />
           <Route exact path="/news/write" element={<Write />} />
           <Route exact path="/news/update/:id" element={<UpdateNews />} />
+          <Route exact path="/news/blog/id/:id" element={<News />} />
         </Routes>
       </BrowserRouter>
     </div>
