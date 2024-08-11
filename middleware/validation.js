@@ -20,7 +20,7 @@ validateUserName = [
     .isString()
     .withMessage("Must be a valid name!")
     .isLength({ min: 3, max: 6 })
-    .withMessage("Name must be within 3 to 6 character!")
+    .withMessage("User name must be within 3 to 6 character!")
     .isLowercase()
     .withMessage("User name must be all lowercase"),
 ];

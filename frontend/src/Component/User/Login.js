@@ -122,7 +122,7 @@ export const Login = () => {
                           >
                             Login
                           </button>
-                          <p className="forgot-password text-right">
+                          <p className="forgot-password text-right mt-2">
                             Don't have an account?
                             <a href="/user/register">Register </a>
                           </p>

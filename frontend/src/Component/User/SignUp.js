@@ -183,7 +183,7 @@ export const SignUp = () => {
                           >
                             Register
                           </button>
-                          <p className="forgot-password text-right">
+                          <p className="forgot-password text-right mt-3">
                             Already registered? <a href="/user/login">Login</a>{" "}
                           </p>
                         </div>
