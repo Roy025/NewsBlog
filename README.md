@@ -32,6 +32,8 @@ Update your password to maintain account security.
 
 ### Backend
 
+- Node.js
+  
 - Express.js
   
 - JWT
