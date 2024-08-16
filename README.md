@@ -36,7 +36,8 @@ Update your password to maintain account security.
   
 - Express.js
   
-- JWT
+- JSON Web Tokens
+  
 ### Database
 
 - MySQL
