@@ -35,9 +35,9 @@ Update your password to maintain account security.
 - JWT
 ### Database
 
-MySQL
+-MySQL
 
-Sequelize ORM
+-Sequelize ORM
 
 
 ## Installation
