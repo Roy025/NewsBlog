@@ -22,18 +22,21 @@ Update your password to maintain account security.
 
 ### Frontend
 
-React.js
-React Router
-Axios
+- React.js
+
+- React Router
+
+- Axios
 
 ### Backend
 
-Express.js
-JWT
-
+- Express.js
+  
+- JWT
 ### Database
 
 MySQL
+
 Sequelize ORM
 
 
