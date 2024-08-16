@@ -6,28 +6,39 @@
 **User Registration and Authentication:** 
 Register a new account with unique credentials.
 Authenticate using a JWT (JSON Web Token) to ensure secure access.
+
 **Newsfeed:**
 View all posts from users in a centralized newsfeed.
 Interact with posts by reading, commenting, and sharing your thoughts.
+
 **Post Management:**
 Add new posts to share your ideas with others.
 Edit or delete your personal posts as needed.
+
 **Account Management:**
 Update your password to maintain account security.
+
 ## Technology Stack
+
 ### Frontend
+
 React.js
 React Router
 Axios
+
 ### Backend
+
 Express.js
 JWT
+
 ### Database
+
 MySQL
 Sequelize ORM
 
 
 ## Installation
+
 *Database*
 1. Run XAMPP
 2. Make sure there is a db called crud(from .env folder)
