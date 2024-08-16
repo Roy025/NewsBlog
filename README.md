@@ -28,6 +28,8 @@ Update your password to maintain account security.
 
 - Axios
 
+- Bootstrap
+
 ### Backend
 
 - Express.js
