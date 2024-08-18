@@ -9,14 +9,13 @@ Authenticate using a JWT (JSON Web Token) to ensure secure access.
 
 **Newsfeed:**
 View all posts from users in a centralized newsfeed.
-Interact with posts by reading, commenting, and sharing your thoughts.
 
 **Post Management:**
 Add new posts to share your ideas with others.
-Edit or delete your personal posts as needed.
+Update or delete your personal posts as needed.
 
 **Account Management:**
-Update your password to maintain account security.
+Update your personal information or password to maintain account security.
 
 ## Technology Stack
 
